@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RPM.Model;
+using RPM.ViewModel;
 
 
 namespace RPM
@@ -22,8 +24,9 @@ namespace RPM
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static int IdRole { get; set; }
+        RoleViewModel vmRole = new RoleViewModel();
 
+        public static int IdRole { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -36,7 +39,8 @@ e)
         }
         private void Role_OnClick(object sender, RoutedEventArgs e)
         {
-            WindowRole wRole = new WindowRole();
+            //RoleViewModel vmRole = new RoleViewModel();
+            WindowRole wRole = new WindowRole(vmRole);
             wRole.Show();
         }
     }

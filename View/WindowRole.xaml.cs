@@ -7,22 +7,27 @@ namespace RPM.View
     /// <summary>
     /// Interaction logic for WindowRole.xaml
     /// </summary>
-    
+
+
     public partial class WindowRole : Window
     {
-
-        public WindowRole()
+        RoleViewModel vmRole;
+        /// <summary>
+        /// ////////////////////////////////////////////////////
+        /// </summary>
+        public WindowRole(RoleViewModel passedRole)
         {
             InitializeComponent();
-            RoleViewModel vmRole = new RoleViewModel();
+            vmRole = passedRole;
             lvRole.ItemsSource = vmRole.ListRole;
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            RoleViewModel vmRole = new RoleViewModel();
+            //RoleViewModel vmRole = new RoleViewModel();
+            lvRole.ItemsSource = vmRole.ListRole;
             WindowNewRole wnRole = new WindowNewRole
             {
-                Title = "Новая должность",
+                Title = "Новая должность",  
                 Owner = this
             };
             int maxIdRole = vmRole.MaxId() + 1;
@@ -38,6 +43,8 @@ namespace RPM.View
         }
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            //RoleViewModel vmRole = new RoleViewModel();
+            lvRole.ItemsSource = vmRole.ListRole;
             WindowNewRole wnRole = new WindowNewRole
             {
                 Title = "Редактирование должности",
@@ -65,7 +72,7 @@ namespace RPM.View
         }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            RoleViewModel vmRole = new RoleViewModel();
+            //RoleViewModel vmRole = new RoleViewModel();
             lvRole.ItemsSource = vmRole.ListRole;
             Role role = (Role)lvRole.SelectedItem;
             if (role != null)
